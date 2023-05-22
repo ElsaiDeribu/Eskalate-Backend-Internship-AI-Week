@@ -1,10 +1,12 @@
 using Domain;
 using Domain.Common;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace Persistence
 {
-    public class TaskManagementSystemDbContext : DbContext
+    public class TaskManagementSystemDbContext : IdentityDbContext<User>
     {
         public TaskManagementSystemDbContext(DbContextOptions<TaskManagementSystemDbContext> options)
                     : base(options)
@@ -16,6 +18,10 @@ namespace Persistence
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(TaskManagementSystemDbContext).Assembly);
+            modelBuilder.Entity<IdentityUserLogin<string>>().HasNoKey();
+            // Other model configuration
+
+            base.OnModelCreating(modelBuilder);
 
         }
 
@@ -36,8 +42,8 @@ namespace Persistence
             return base.SaveChangesAsync(cancellationToken);
         }
 
-         public DbSet<Domain.Task> Tasks { get; set; }
-         public DbSet<CheckList> CheckLists { get; set; }
+        public DbSet<Domain.Task> Tasks { get; set; }
+        public DbSet<CheckList> CheckLists { get; set; }
 
 
 

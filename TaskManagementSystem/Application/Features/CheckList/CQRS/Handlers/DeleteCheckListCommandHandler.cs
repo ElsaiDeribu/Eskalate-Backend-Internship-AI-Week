@@ -1,6 +1,4 @@
-﻿
-
-using Application.Contracts.Persistence;
+﻿using Application.Contracts.Persistence;
 using Application.Features.CheckList.CQRS.Commands;
 using Application.Responses;
 using AutoMapper;
