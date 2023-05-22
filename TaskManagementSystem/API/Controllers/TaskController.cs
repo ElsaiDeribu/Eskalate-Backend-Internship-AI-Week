@@ -3,6 +3,7 @@ using Application.Features.Task.CQRS.Commands;
 using Application.Features.Task.CQRS.Queries;
 using Application.Features.Task.DTOs;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -18,7 +19,8 @@ namespace API.Controllers
             _mediator = mediator;
         }
 
-         [HttpGet]
+        [HttpGet]
+
         public async Task<ActionResult> Get()
         {
 
@@ -51,6 +53,6 @@ namespace API.Controllers
 
 
 
-     
+
     }
 }
