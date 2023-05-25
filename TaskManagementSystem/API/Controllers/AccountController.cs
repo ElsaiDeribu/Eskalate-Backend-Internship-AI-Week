@@ -82,8 +82,6 @@ namespace API.Controllers
         }
 
 
-
-
         private UserDto CreateUserObject(User user)
         {
             return new UserDto

@@ -11,7 +11,10 @@ namespace Application.Profiles
         public MappingProfile()
         {
             #region Task Mappings
-            CreateMap<Domain.Task, TaskDto>().ReverseMap();
+            // CreateMap<Domain.Task, TaskDto>().ReverseMap();
+            CreateMap<Domain.Task, TaskDto>()
+                .ForMember(t => t.ownerName, o => o.MapFrom(s => s.Owner.FullName));
+
             CreateMap<Domain.Task, CreateTaskDto>().ReverseMap();
             CreateMap<Domain.Task, UpdateTaskDto>().ReverseMap();
             #endregion Task Mappings

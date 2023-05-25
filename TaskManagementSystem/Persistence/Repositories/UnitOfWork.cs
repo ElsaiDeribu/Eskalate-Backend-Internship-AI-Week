@@ -1,18 +1,20 @@
 using Application.Contracts.Persistence;
+using AutoMapper;
 
 namespace Persistence.Repositories
 {
     public class UnitOfWork : IUnitOfWork
     {
-       private readonly TaskManagementSystemDbContext _dbContext;
-       private ITaskRepository _taskRepository;
-       private ICheckListRepository _checkListRepository;
+        private readonly TaskManagementSystemDbContext _dbContext;
+        private ITaskRepository _taskRepository;
+        private ICheckListRepository _checkListRepository;
 
-
-         public UnitOfWork(TaskManagementSystemDbContext dbContext)
-         {
-              _dbContext = dbContext;
-         }
+        private IMapper _mapper;
+        public UnitOfWork(TaskManagementSystemDbContext dbContext, IMapper mapper)
+        {
+            _dbContext = dbContext;
+            _mapper = mapper;
+        }
 
 
         public ITaskRepository TaskRepository
@@ -21,7 +23,7 @@ namespace Persistence.Repositories
             {
                 if (_taskRepository == null)
                 {
-                    _taskRepository = new TaskRepository(_dbContext);
+                    _taskRepository = new TaskRepository(_dbContext, _mapper);
                 }
 
                 return _taskRepository;
@@ -50,7 +52,7 @@ namespace Persistence.Repositories
 
         public async Task<int> Save()
         {
-              return await _dbContext.SaveChangesAsync();
+            return await _dbContext.SaveChangesAsync();
 
         }
     }

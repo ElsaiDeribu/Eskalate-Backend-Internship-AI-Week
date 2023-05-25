@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "OkPJLFzHk6x/ojNnFivxtSgLjsju1rnDw1ICQGT0G8JmHRcZarp9qUcxhtNQYtoQZBpRkGxcwPntlaEoWkdeIg==",
+  "dgSpecHash": "Ft20r6jnYPyk19k2DHVlK47XCAT43QZnEDCea7H3fGFUpbyF6kEk6cTNAUDvy5ifMCsiV7JH4q2WEJ7MrwAD1w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\envy 12th\\Desktop\\New folder\\Eskalate-Backend-Internship-AI-Week\\TaskManagementSystem\\Application\\Application.csproj",
+  "projectFilePath": "c:\\Users\\envy 12th\\Desktop\\New folder\\Eskalate-Backend-Internship-AI-Week\\TaskManagementSystem\\Application\\Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\envy 12th\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\envy 12th\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

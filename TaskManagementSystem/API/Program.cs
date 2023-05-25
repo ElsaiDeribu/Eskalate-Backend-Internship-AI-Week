@@ -7,6 +7,8 @@ using Persistence.Seed;
 using Domain;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using Infrastructure.Security;
+using Application.Contracts.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,6 +32,7 @@ builder.Services.AddCors(options => {
 });
 
 builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<IUserAccessor, UserAccessor>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

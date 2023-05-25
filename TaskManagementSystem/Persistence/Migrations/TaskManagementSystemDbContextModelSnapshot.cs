@@ -43,11 +43,16 @@ namespace Persistence.Migrations
                     b.Property<bool>("Status")
                         .HasColumnType("boolean");
 
+                    b.Property<int>("TaskId")
+                        .HasColumnType("integer");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("TaskId");
 
                     b.ToTable("CheckLists");
                 });
@@ -73,6 +78,10 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("LastModifiedDate")
                         .HasColumnType("timestamp without time zone");
 
+                    b.Property<string>("OwnerId")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("timestamp without time zone");
 
@@ -84,6 +93,8 @@ namespace Persistence.Migrations
                         .HasColumnType("text");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("OwnerId");
 
                     b.ToTable("Tasks");
                 });
@@ -101,7 +112,6 @@ namespace Persistence.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasMaxLength(256)
                         .HasColumnType("character varying(256)");
 
@@ -142,7 +152,6 @@ namespace Persistence.Migrations
                         .HasColumnType("boolean");
 
                     b.Property<string>("UserName")
-                        .IsRequired()
                         .HasMaxLength(256)
                         .HasColumnType("character varying(256)");
 
@@ -290,6 +299,28 @@ namespace Persistence.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("Domain.CheckList", b =>
+                {
+                    b.HasOne("Domain.Task", "Task")
+                        .WithMany("CheckList")
+                        .HasForeignKey("TaskId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Task");
+                });
+
+            modelBuilder.Entity("Domain.Task", b =>
+                {
+                    b.HasOne("Domain.User", "Owner")
+                        .WithMany("Tasks")
+                        .HasForeignKey("OwnerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Owner");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -339,6 +370,16 @@ namespace Persistence.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Domain.Task", b =>
+                {
+                    b.Navigation("CheckList");
+                });
+
+            modelBuilder.Entity("Domain.User", b =>
+                {
+                    b.Navigation("Tasks");
                 });
 #pragma warning restore 612, 618
         }
