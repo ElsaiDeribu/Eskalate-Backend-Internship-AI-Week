@@ -199,3 +199,4 @@ C:\Users\envy 12th\Desktop\New folder\Eskalate-Backend-Internship-AI-Week\TaskMa
 C:\Users\envy 12th\Desktop\New folder\Eskalate-Backend-Internship-AI-Week\TaskManagementSystem\UnitTest\obj\Debug\net7.0\UnitTest.pdb
 C:\Users\envy 12th\Desktop\New folder\Eskalate-Backend-Internship-AI-Week\TaskManagementSystem\UnitTest\obj\Debug\net7.0\UnitTest.genruntimeconfig.cache
 C:\Users\envy 12th\Desktop\New folder\Eskalate-Backend-Internship-AI-Week\TaskManagementSystem\UnitTest\obj\Debug\net7.0\ref\UnitTest.dll
+C:\Users\envy 12th\Desktop\New folder\Eskalate-Backend-Internship-AI-Week\TaskManagementSystem\UnitTest\bin\Debug\net7.0\CoverletSourceRootsMapping_UnitTest

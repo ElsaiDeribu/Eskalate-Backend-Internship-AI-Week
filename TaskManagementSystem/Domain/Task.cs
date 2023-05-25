@@ -1,4 +1,5 @@
-﻿using Domain.Common;
+﻿using System.ComponentModel.DataAnnotations;
+using Domain.Common;
 
 namespace Domain
 {
@@ -10,7 +11,10 @@ namespace Domain
         public DateTime EndDate { get; set; }
         public bool Status { get; set; }
 
-        // public ICollection<CheckList>? CheckList { get; set; }
+        [Required]
+        public User Owner { get; set; }
+
+        public ICollection<CheckList> CheckList { get; set; } = new List<CheckList>();
 
     }
 }

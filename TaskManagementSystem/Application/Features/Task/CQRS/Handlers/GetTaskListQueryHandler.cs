@@ -21,8 +21,9 @@ namespace Application.Features.Task.CQRS.Handlers
         }
         public async Task<Result<List<TaskDto>>> Handle(GetTaskListQuery request, CancellationToken cancellationToken)
         {
+            
             var response = new Result<List<TaskDto>>();
-            var tasks = await _unitOfWork.TaskRepository.GetAll();
+            var tasks = await _unitOfWork.TaskRepository.GetAllTasks();
 
 
             response.Success = true;

@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+
+using Application.Features.CheckList.DTOs;
 
 namespace Application.Features.Task.DTOs
 {
@@ -13,6 +11,7 @@ namespace Application.Features.Task.DTOs
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
         public bool? Status { get; set; }
+        public ICollection<CreateCheckListDto> CheckList { get; set; } = new List<CreateCheckListDto>();
 
     }
 }
